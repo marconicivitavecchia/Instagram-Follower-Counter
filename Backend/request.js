@@ -48,8 +48,8 @@ function fetchFollowerCount() {
   req.end();
 }
 
-// Esegui la funzione ogni secondo
-setInterval(fetchFollowerCount, 1000);
+// Esegui la funzione ogni dieci secondi
+setInterval(fetchFollowerCount, 10000);
 
 // Esegui la funzione una volta all'avvio del programma
 fetchFollowerCount();
