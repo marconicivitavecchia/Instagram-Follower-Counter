@@ -13,8 +13,9 @@ const options = {
 
 let oldFollowerCount = 0;
 
-let req = https.request(options, function(res) {
-  let data = '';
+function fetchFollowerCount() {
+  let req = https.request(options, function(res) {
+    let data = '';
   
     res.on('data', function(chunk) {
       data += chunk;
@@ -25,15 +26,12 @@ let req = https.request(options, function(res) {
         let jsonData = JSON.parse(data);
         if (jsonData.data.user) {
           let followerCount = jsonData.data.user.edge_followed_by.count;
-          // console.log("Numero di follower: " + followerCount);
-          if(followerCount!=oldFollowerCount)
-          {
+          if (followerCount != oldFollowerCount) {
             console.log("Numero di follower: " + followerCount);
+            oldFollowerCount = followerCount;
+          } else {
+            console.log("Stesso numero di followers");
           }
-          else{
-            console.log("Stesso numero di followers")
-          }
-          oldFollowerCount=followerCount;
         } else {
           console.log("Nessun utente trovato.");
         }
@@ -41,10 +39,17 @@ let req = https.request(options, function(res) {
         console.error("Errore nel parsing dei dati JSON: " + error);
       }
     });
-});
+  });
 
-req.on('error', function(error) {
-  console.error(error);
-});
+  req.on('error', function(error) {
+    console.error(error);
+  });
 
-req.end();
+  req.end();
+}
+
+// Esegui la funzione ogni secondo
+setInterval(fetchFollowerCount, 1000);
+
+// Esegui la funzione una volta all'avvio del programma
+fetchFollowerCount();
