@@ -11,26 +11,36 @@ const options = {
   }
 };
 
-const req = https.request(options, function(res) {
+let oldFollowerCount = 0;
+
+let req = https.request(options, function(res) {
   let data = '';
-
-  res.on('data', function(chunk) {
-    data += chunk;
-  });
-
-  res.on('end', function() {
-    try {
-      const jsonData = JSON.parse(data);
-      if (jsonData.data.user) {
-        const followerCount = jsonData.data.user.edge_followed_by.count;
-        console.log("Numero di follower: " + followerCount);
-      } else {
-        console.log("Nessun utente trovato.");
+  
+    res.on('data', function(chunk) {
+      data += chunk;
+    });
+    
+    res.on('end', function() {
+      try {
+        let jsonData = JSON.parse(data);
+        if (jsonData.data.user) {
+          let followerCount = jsonData.data.user.edge_followed_by.count;
+          // console.log("Numero di follower: " + followerCount);
+          if(followerCount!=oldFollowerCount)
+          {
+            console.log("Numero di follower: " + followerCount);
+          }
+          else{
+            console.log("Stesso numero di followers")
+          }
+          oldFollowerCount=followerCount;
+        } else {
+          console.log("Nessun utente trovato.");
+        }
+      } catch (error) {
+        console.error("Errore nel parsing dei dati JSON: " + error);
       }
-    } catch (error) {
-      console.error("Errore nel parsing dei dati JSON: " + error);
-    }
-  });
+    });
 });
 
 req.on('error', function(error) {
