@@ -33,17 +33,18 @@ const client = mqtt.connect(connectUrl, {
 
 
 let oldFollowerCount = 0; // This variable is used to check if the follower count has increased/decreased
+let output;
 
 function fetchFollowerCount() {
-  let result=0;
-  let req = https.request(options, function(res) {
+  let result = 0;
+  let req = https.request(options, function (res) {
     let data = '';
-  
-    res.on('data', function(chunk) {
+
+    res.on('data', function (chunk) {
       data += chunk;
     });
-    
-    res.on('end', function() {
+
+    res.on('end', function () {
       try {
         let jsonData = JSON.parse(data);
         if (jsonData.data.user) {
@@ -58,26 +59,30 @@ function fetchFollowerCount() {
           }
           else {
             console.log("Follower number hasn't changed");
+            result = "0";
           }
-        } 
-        else 
-        {
-          console.log("No user found.");
         }
-      } 
+        else {
+          console.log("No user found.");
+          result = "0";
+        }
+      }
       catch (error) {
         console.error("JSON data parsing error: " + error);
       }
-      return result;
     });
   });
 
-  req.on('error', function(error) {
+  req.on('error', function (error) {
     console.error(error);
   });
 
   req.end();
+  return result;
 }
+
+output = fetchFollowerCount(); // This is heavily unoptimized
+  // for it to be sent, this variable has to be a string
 
 //MQTT Connection
 const topic = 'IFC-Backend/1'
@@ -85,23 +90,24 @@ const topic = 'IFC-Backend/1'
 client.on('connect', () => {
   console.log('Connected')
   client.subscribe([topic], () => { // Subscribes to specified topic
-    console.log(`Subscribed to topic '${topic}'`) 
+    console.log(`Subscribed to topic '${topic}'`)
   })
+
+  console.log("Output: " + output);
+
+  console.log("publishing message...");
+  client.publish(topic, output, { qos: 0, retain: false }, (error) => { // Sends message to the broker
+    if (error) {
+      console.error(error)
+    }
+  })
+
+})
+/*
+client.on('message', (topic, payload) => {
+  console.log('Received Message:', topic, payload.toString())
+})*/
+
 
   // Runs the function every 10 seconds
   setInterval(fetchFollowerCount, 10000);
-
-  let output = String(fetchFollowerCount()); // This is heavily unoptimized
-  // for it to be sent, this variable has to be a string
-
-  console.log("Output: " + output);
-  if(output=='undefined')output="0"; 
-
-    console.log("publishing message...");
-    client.publish(topic, output, { qos: 0, retain: false }, (error) => { // Sends message to the broker
-      if (error) {
-        console.error(error)
-      }
-    })
-  
-})
