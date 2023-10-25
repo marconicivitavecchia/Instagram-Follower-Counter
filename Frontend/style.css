@@ -10,10 +10,24 @@
     }
 }
 
+.line {
+    background-color: black; 
+}
+
+@media (prefers-color-scheme: dark) {
+    .line {
+        background-color: white;
+    }
+}
+
 body {
     font-family: 'Montserrat';font-size: 30px;
     text-align:center;
 
     background: var(--body-bg);
     color: var(--body-color);
+}
+
+.image {
+    margin-top: 5%;
 }
