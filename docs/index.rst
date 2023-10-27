@@ -3,16 +3,14 @@
    You canl adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
-Welcome to Instagram Follower Counter's documentation!
+Benvenuti sulla documentazione ufficiale di Instagram Follower Counter!
 ======================================================
 
-.. toctree::
-   :maxdepth: 2
-   :caption: Contents:
+Introduzione
+--------
 
 
-
-Indices and tables
+Indici e riferimenti
 ==================
 
 * :ref:`genindex`
