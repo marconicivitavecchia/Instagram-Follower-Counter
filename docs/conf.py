@@ -17,9 +17,16 @@ release = '0.0.1'
 from xanadu_sphinx_theme import templates_dir
 
 extensions = [
-    'sphinx.ext.autodoc',
-    'sphinx.ext.viewcode',
-    'sphinx.ext.napoleon',
+    "sphinx.ext.autodoc",
+    "sphinx.ext.autosummary",
+    "sphinx.ext.todo",
+    "sphinx.ext.coverage",
+    "sphinx.ext.mathjax",
+    "sphinx.ext.napoleon",
+    "sphinx.ext.inheritance_diagram",
+    "sphinx.ext.viewcode",
+    "sphinx.ext.intersphinx",
+    "m2r2"
 ]
 
 templates_path = [templates_dir()]
@@ -40,27 +47,18 @@ html_theme_options = {
     "navbar_name": "Instagram Follower Counter",
     "navbar_logo_path": "_static/logo_marconi.png",
 
-    "navbar_home_link": "https://example.com",
+    "navbar_home_link": "https://instagram-follower-counter.readthedocs.io/",
 
     "github_repo": "marconicivitavecchia/Instagram-Follower-Counter",
     "navbar_left_links": [
         {
-            "name": "Install",
-            "href": "install.html",
-        },
-        {
-            "name": "Documentation",
+            "name": "Documentazione",
             "href": "index.html",
             "active": True,
         }
     ],
 
     "navbar_right_links": [
-        {
-            "name": "FAQ",
-            "href": "https://example.com/faq.html",
-            "icon": "fas fa-question",
-        },
         {
             "name": "GitHub",
             "href": "https://github.com/marconicivitavecchia/Instagram-Follower-Counter",
@@ -111,4 +109,9 @@ html_theme_options = {
     "table_header_background_colour": "#ffdce5",
     "border_colour": "#b13a59",
     "text_accent_colour": "#b13a59",
+    "toc_mobile_heading_colour": "#ec407a",
+    "toc_mobile_heading_background_colour": "#fcd9e5",
+    "toc_overview": True,
+    "toc_subset": False,
+    "toc_global": True,
 }
