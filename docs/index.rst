@@ -4,18 +4,33 @@
    contain the root `toctree` directive.
 
 Benvenuti sulla documentazione ufficiale di Instagram Follower Counter!
-======================================================
+=======================================================================
 
 Introduzione
---------
+------------
 
-Siete ossessionati dal sapere ogni secondo di quanto cresce o decresce il tuo profilo Instagram? Questo progetto si basa proprio sulla creazione di un oggetto con un contatore interno che puoi mettere dove vuoi per tenere d'occhio i tuoi follower!
+Siete ossessionati dal sapere ogni secondo di quanto cresce o decresce il vostro profilo Instagram? Questo progetto si basa proprio sulla creazione di un oggetto di design con un contatore fisico che puoi mettere dove vuoi per tenere d'occhio i tuoi follower!
 
-In questa società dove tutti noi vogliamo controllare tutto, ma soprattutto vogliamo controllare ogni cosa all’istante. Abbiamo pensato qual’è la cosa che ogni giovane o anche ogni adulto al giorno d’oggi usa costantemente? I social. Quindi perché non costruire un Counter fisico di follower, in modo tale che non dobbiate per forza: accendere il telefono, andare su Instagram, cliccare sul vostro profilo e vedere a quanto ammonta il vostro numero di follower. Con il Counter fisico vi basta posizionarlo su una scrivania, oppure dove volete e semplicemente collegando il vostro account, ci basterà girare la testa per vedere di quanto sono cresciuti i vostri follower e perché no, farlo vedere a tutti!
+In questa società dove tutti noi vogliamo controllare tutto, ma soprattutto vogliamo controllare ogni cosa all’istante, abbiamo pensato: qual’è la cosa che ogni giovane o adulto al giorno d’oggi usa costantemente? I social. Quindi perché non costruire un contatore fisico di follower, in modo tale che non dobbiate per forza accendere il telefono, andare su Instagram, cliccare sul vostro profilo e vedere a quanto ammonta il vostro numero di follower.
 
-Indici e riferimenti
-==================
+Con l\'**Instagram Follower Counter** vi basterà posizionarlo dove preferite e semplicemente collegando il vostro account, vi basterà girare la testa per vedere il numero attuale di follower del vostro profilo Instagram e perché no, farlo vedere a tutti!
 
-* :ref:`genindex`
-* :ref:`modindex`
-* :ref:`search`
+Licenza
+-------
+
+Instagram Follower Counter è un progetto **open source**, rilasciato sotto la licenza `GNU General Public License v3.0 <https://www.gnu.org/licenses/gpl-3.0.en.html#license-text>`_.
+
+.. toctree::
+   :maxdepth: 2
+   :caption: 1. GitHub
+   :hidden:
+
+   github/introduction
+   github/setup
+
+.. toctree::
+   :maxdepth: 1
+   :caption: Note di rilascio
+   :hidden:
+
+   release_notes

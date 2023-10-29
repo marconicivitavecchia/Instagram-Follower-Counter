@@ -1,5 +1,3 @@
-# CHANGELOG
-
 ## [v0.0.1-alpha](https://github.com/marconicivitavecchia/Instagram-Follower-Counter/releases/tag/v0.0.1-alpha) - 2023-10-27 13:40:44
 
 ## What's Changed
