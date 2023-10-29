@@ -112,6 +112,6 @@ html_theme_options = {
     "toc_mobile_heading_colour": "#ec407a",
     "toc_mobile_heading_background_colour": "#fcd9e5",
     "toc_overview": True,
-    "toc_subset": False,
+    "toc_subset": True,
     "toc_global": True,
 }
