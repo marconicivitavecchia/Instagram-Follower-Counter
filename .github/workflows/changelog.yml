@@ -15,6 +15,8 @@ jobs:
       with:
         REPO_NAME: ''
         ACCESS_TOKEN: ${{secrets.GITHUB_TOKEN}}
+        BRANCH: 'workflows/auto-changelog'
         PATH: 'CHANGELOG.md'
+        PULL_REQUEST: 'dev'
         COMMIT_MESSAGE: 'docs(CHANGELOG): update release notes'
         TYPE: 'feat:Feature,fix:Bug Fixes,docs:Documentation,refactor:Refactor,perf:Performance Improvements'
