@@ -30,7 +30,7 @@ body {
 }
 
 .image {
-    margin-top: 5%;
+    margin-top: 3%;
 }
 
 .centered-object {
@@ -40,10 +40,17 @@ body {
     background-color: #FFFFFF;
     border-radius: 5%;
     position: absolute;
-    top: 80%;
+    top: 79%;
     left: 50%;
     transform: translate(-50%, -50%);
     display: flex;
     align-items: center;
     justify-content: center;
+}
+
+@media (prefers-color-scheme: dark){
+    .centered-object{
+        background-color:black;
+        border: 2px solid white;
+    }
 }
