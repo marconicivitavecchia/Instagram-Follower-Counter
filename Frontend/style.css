@@ -21,3 +21,15 @@ body {
 .image {
     margin-top: 5%;
 }
+
+.square {
+    width: 650px;
+    height: 200px;
+    border: 2px solid black;
+    background-color: #FFFFFF;
+    border-radius: 10%;
+    position: absolute;
+            top: 90%;
+            left: 50%;
+            transform: translate(-50%, -50%);ù
+        }
