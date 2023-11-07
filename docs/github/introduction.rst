@@ -1,5 +1,5 @@
 Introduzione a GitHub
----------------------
+=====================
 
 Il progetto è ospitato su **GitHub**. Per poter contribuire al progetto è necessario creare un account su GitHub e **installare Git** sul proprio computer.
 
