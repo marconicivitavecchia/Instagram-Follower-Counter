@@ -1,1 +1,0 @@
-This code uses an Instagram API to acquire the number of followers from a specified user, then sends the data to an MQTT broker which passes it to an ESP-32 chip.
