@@ -1,13 +1,13 @@
 // Import required modules
-const express = require('express');
-const cors = require('cors');
-const path = require('path');
-const https = require('https');
-const mqttClient = require('./mqtt');
+const express = require('express');  // Express framework for handling HTTP requests
+const cors = require('cors');  // CORS middleware for enabling cross-origin resource sharing
+const path = require('path');  // Path module for handling file paths
+const https = require('https');  // HTTPS module for making secure requests
+const mqttClient = require('./mqtt');  // Custom MQTT client module
 
 // Create an Express application
 const app = express();
-const port = process.env.PORT || 5500; // Use the port defined by the environment variable, in this case 5500 for me
+const port = process.env.PORT || 5500; // Use the port defined by the environment variable, defaulting to 5500
 
 // Enable CORS for all routes
 app.use(cors());
@@ -18,7 +18,7 @@ app.use(express.static(path.join(__dirname, 'Frontend')));
 // Define the Instagram username to fetch follower count for
 const username = "iismarconicivitavecchia";
 
-// Define the request options
+// Define the request options for fetching Instagram profile information
 const options = {
   hostname: 'i.instagram.com',
   path: `/api/v1/users/web_profile_info/?username=${username}`,
@@ -32,18 +32,22 @@ const options = {
 let oldFollowerCount = 0;
 let output;
 
-// Function to fetch the follower count
+// Function to fetch the follower count from Instagram
 function fetchFollowerCount() {
   const req = https.get(options, (res) => {
     let data = '';
 
+    // Accumulate data as it is received
     res.on('data', (chunk) => {
       data += chunk;
     });
 
+    // Process the complete response
     res.on('end', () => {
       try {
+        // Parse the JSON response from Instagram
         const jsonData = JSON.parse(data);
+
         if (jsonData.data.user) {
           // Extract the follower count from the JSON response
           const followerCount = jsonData.data.user.edge_followed_by.count;
@@ -67,14 +71,16 @@ function fetchFollowerCount() {
     });
   });
 
+  // Handle errors in the HTTPS request
   req.on('error', (error) => {
     console.error(error);
   });
 
+  // Complete the request
   req.end();
 }
 
-// Call fetchFollowerCount every 10 seconds
+// Call fetchFollowerCount every 10 seconds using setInterval
 setInterval(fetchFollowerCount, 10000);
 
 // Define a route to send the follower count to the front end
@@ -82,7 +88,7 @@ app.get('/getFollowerCount', (req, res) => {
   res.json({ followerCount: output || 'Loading...' });
 });
 
-// Start the Express server
+// Start the Express server and listen on the specified port
 app.listen(port, () => {
   console.log(`Server is running on http://localhost:${port}`);
 });
