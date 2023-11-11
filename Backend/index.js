@@ -8,8 +8,8 @@ const mqttClient = require('./mqtt');
 const app = express();
 const port = process.env.PORT || 3000;
 
-// Serve static files (CSS, images, etc.) from a public directory
-app.use(express.static(path.join(__dirname, 'public')));
+// Serve static files (CSS, images, etc.) from a frontend directory
+app.use(express.static(path.join(__dirname, 'Frontend')));
 
 // Define the Instagram username to fetch follower count for
 const username = "iismarconicivitavecchia";
