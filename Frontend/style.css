@@ -10,12 +10,23 @@
     }
 }
 
+.line {
+    background-color: black; 
+}
+
+@media (prefers-color-scheme: dark) {
+    .line {
+        background-color: white;
+    }
+}
+
 body {
     font-family: 'Montserrat';font-size: 30px;
     text-align:center;
 
     background: var(--body-bg);
     color: var(--body-color);
+    
 }
 
 .image {
@@ -31,5 +42,28 @@ body {
     position: absolute;
             top: 90%;
             left: 50%;
-            transform: translate(-50%, -50%);ù
-        }
+            transform: translate(-50%, -50%);
+}
+
+.centered-object {
+    width: 200px;
+    height: 100px;
+    border: 2px solid black;
+    background-color: #FFFFFF;
+    border-radius: 5%;
+    position: absolute;
+    top: 79%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+@media (prefers-color-scheme: dark){
+    .centered-object{
+        background-color:black;
+        border: 2px solid white;
+    }
+}
+
