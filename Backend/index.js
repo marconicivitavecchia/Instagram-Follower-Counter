@@ -1,12 +1,16 @@
 // Import required modules
 const express = require('express');
+const cors = require('cors');
 const path = require('path');
 const https = require('https');
 const mqttClient = require('./mqtt');
 
 // Create an Express application
 const app = express();
-const port = process.env.PORT || 3000;
+const port = process.env.PORT || 5500; // Use the port defined by the environment variable, in this case 5500 for me
+
+// Enable CORS for all routes
+app.use(cors());
 
 // Serve static files (CSS, images, etc.) from a frontend directory
 app.use(express.static(path.join(__dirname, 'Frontend')));
