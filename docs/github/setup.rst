@@ -1,5 +1,5 @@
 Configurazione per lo sviluppo
-------------------------------
+==============================
 
 Per lo sviluppo sono necessari i seguenti software:
 
