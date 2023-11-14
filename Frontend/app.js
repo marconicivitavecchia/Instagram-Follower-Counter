@@ -38,3 +38,14 @@ function loadJSON() {
 loadJSON();
 
 $(document).init(myInit);
+
+window.addEventListener("scroll", function() {
+    var footer = document.getElementById("footer");
+    var distanceFromTop = footer.getBoundingClientRect().top;
+
+    if (distanceFromTop <= window.innerHeight) {
+        footer.style.opacity = 1;
+    } else {
+        footer.style.opacity = 0;
+    }
+});

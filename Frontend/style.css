@@ -21,7 +21,7 @@
 }
 
 body {
-    font-family: 'Montserrat';font-size: 30px;
+    font-family: 'Montserrat'; font-size: 30px;
     text-align:center;
 
     background: var(--body-bg);
@@ -53,4 +53,20 @@ body {
         background-color:black;
         border: 2px solid white;
     }
+}
+
+.empty-space {
+    height: 800px;
+}
+
+footer {
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    padding: 10px;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    opacity: 0; /* Inizialmente rendi il footer trasparente */
+    transition: opacity 0.2s;
 }
