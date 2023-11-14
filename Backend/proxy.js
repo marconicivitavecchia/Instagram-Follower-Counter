@@ -4,7 +4,7 @@ const { HttpsProxyAgent } = require('https-proxy-agent');
 
 const url = 'https://instagram.com/iismarconicivitavecchia/'; //destination address
 const proxyAgent = new HttpsProxyAgent(
-  'http://spr80fpvep:gcJatraCin0685lOJw@gate.smartproxy.com:7000'); //proxy
+  'http://'); //proxy
 
 axios
   .get(url, {
