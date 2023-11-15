@@ -1,47 +1,41 @@
-// Import required modules
-const axios = require('axios');
-const cheerio = require('cheerio');
-const { HttpsProxyAgent } = require('https-proxy-agent');
+// Importing required modules
+const axios = require('axios'); // HTTP client for making requests
+const cheerio = require('cheerio'); // jQuery implementation for server-side scripting
+const { HttpsProxyAgent } = require('https-proxy-agent'); // HTTPS proxy agent for Axios
 
-// Target URL
+// Instagram profile URL
 const url = 'https://instagram.com/iismarconicivitavecchia/';
 
-// Proxy configuration with correct credentials
-const proxyCredentials = {
-  username: 'your-username', // Replace with your proxy username
-  password: 'your-password', // Replace with your proxy password
-};
+// Creating an HTTPS proxy agent for Axios
+const proxyAgent = new HttpsProxyAgent('http://spr80fpvep:RLnGgyy3wjQc85dz5t@gate.smartproxy.com:7000');
+// Replace the placeholder proxy details with your actual proxy information
 
-const proxyAgent = new HttpsProxyAgent({
-  protocol: 'https:',
-  host: 'gate.smartproxy.com',
-  port: 10000,
-  auth: `${proxyCredentials.username}:${proxyCredentials.password}`,
-});
-
-// Make an HTTP GET request to the target URL using Axios and the proxy agent
+// Making a GET request using Axios
 axios
-  .get(url, {
-    httpsAgent: proxyAgent,
-  })
+  .get(url, { httpsAgent: proxyAgent }) // Making a GET request with the specified proxy agent
   .then((response) => {
-    // Extract HTML content from the response
+    // Parsing HTML content using Cheerio
     const html = response.data;
-
-    // Load HTML content into Cheerio for easier manipulation
     const $ = cheerio.load(html);
 
-    // Extract the followers count from the meta tag in the HTML
+    // Extracting followers count from meta tags
     const followersString = $('meta[property="og:description"]').attr('content');
-    
-    // Use a regular expression to extract the numeric followers count
     const match = followersString.match(/(\d+) Followers/);
     const followersCount = match ? parseInt(match[1], 10) : null;
 
-    // Log the followers count to the console
+    // Logging the followers count
     console.log('Followers count:', followersCount);
   })
   .catch((error) => {
-    // Log any errors that occur during the request
-    console.error('Error during the request:', error);
+    // Handling errors during the request
+    console.error('Error during the request:', error.message);
+
+    // Checking if there is a response from the server
+    if (error.response) {
+      console.error('Response status:', error.response.status);
+      console.error('Response data:', error.response.data);
+    }
+
+    // Log the full error object for further investigation
+    console.error('Full error:', error);
   });
