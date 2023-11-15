@@ -7,7 +7,7 @@ const { HttpsProxyAgent } = require('https-proxy-agent'); // HTTPS proxy agent f
 const url = 'https://instagram.com/iismarconicivitavecchia/';
 
 // Creating an HTTPS proxy agent for Axios
-const proxyAgent = new HttpsProxyAgent('http://spr80fpvep:RLnGgyy3wjQc85dz5t@gate.smartproxy.com:7000');
+const proxyAgent = new HttpsProxyAgent('http://your-username:your-passowrd@gate.smartproxy.com:7000');
 // Replace the placeholder proxy details with your actual proxy information
 
 // Making a GET request using Axios
