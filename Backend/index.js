@@ -4,6 +4,9 @@ const cors = require('cors');  // CORS middleware for enabling cross-origin reso
 const path = require('path');  // Path module for handling file paths
 const https = require('https');  // HTTPS module for making secure requests
 const mqttClient = require('./mqtt');  // Custom MQTT client module
+const { HttpsProxyAgent } = require('https-proxy-agent');
+
+const proxyOptions = ''; // Your Proxy URL goes here
 
 // Create an Express application
 const app = express();
@@ -23,6 +26,7 @@ const options = {
   hostname: 'i.instagram.com',
   path: `/api/v1/users/web_profile_info/?username=${username}`,
   method: 'GET',
+  agent: new HttpsProxyAgent(proxyOptions),
   headers: {
     'User-Agent': 'Instagram 76.0.0.15.395 Android (24/7.0; 640dpi; 1440x2560; samsung; SM-G930F; herolte; samsungexynos8890; en_US; 138226743)'
   }
@@ -80,8 +84,8 @@ function fetchFollowerCount() {
   req.end();
 }
 
-// Call fetchFollowerCount every 10 seconds using setInterval
-setInterval(fetchFollowerCount, 10000);
+// Call fetchFollowerCount every 2 seconds using setInterval
+setInterval(fetchFollowerCount, 2000);
 
 // Define a route to send the follower count to the front end
 app.get('/getFollowerCount', (req, res) => {
