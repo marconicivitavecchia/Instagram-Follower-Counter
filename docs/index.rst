@@ -15,6 +15,31 @@ In questa società dove tutti noi vogliamo controllare tutto, ma soprattutto vog
 
 Con l\'**Instagram Follower Counter** vi basterà posizionarlo dove preferite e semplicemente collegando il vostro account, vi basterà girare la testa per vedere il numero attuale di follower del vostro profilo Instagram e perché no, farlo vedere a tutti!
 
+Personas
+--------
+
+Per l'Instagram Follower Counter abbiamo pensato a due tipologie di utenti:
+
+.. admonition:: Personas 1
+   :class: defn
+
+   **Nome:** Mario Lugani
+
+   **Obbiettivo principale:** Mostrare i suoi follower nelle live e nei post.
+
+   **Descrizione:** Mario è un ragazzo di 18 anni, che vive a Milano. Ha la passione per i videogiochi e per i social, infatti si è aperto un canale Twitch e Youtube dove tre volte a settimana fa le sue live. Lavorando sui social, durante le live a Marco piace far vedere agli spettatori il numero di follower della sua pagina Instagram.
+
+--------------------------------------------------------------------------------
+
+.. admonition:: Personas 2
+   :class: defn
+
+   **Nome:** Alessia Ercole
+
+   **Obbiettivo principale:** Commerciante che vuole mettersi a paro con i tempi mostrando ai clienti il numero di follower del suo account Instagram.
+
+   **Descrizione:** Alessia è una ragazza di 23 anni che vive a Torino. Ha appena aperto un negozio sotto casa che vende cosmetici. Essendo un negozio molto moderno Alessia punta molto sui social per vendere i suoi prodotti. Vuole quindi un oggetto di design per mostrare ai clienti il numero di follower della sua pagina Instagram.
+
 Licenza
 -------
 
