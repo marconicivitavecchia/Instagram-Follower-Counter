@@ -19,7 +19,7 @@ const client = mqtt.connect(connectUrl, {
 });
 
 // Define the topic to subscribe to
-const topic = 'IFC-Backend/1';
+const topic = '';
 
 // Event handler when the client is successfully connected to the broker
 client.on('connect', () => {
