@@ -59,14 +59,11 @@ body {
     height: 800px;
 }
 
+a {color : white}
+
 footer {
-    background-color: #333;
-    color: #fff;
+    background-color: darkgrey;
+    color: white;
     text-align: center;
-    padding: 10px;
-    position: fixed;
-    bottom: 0;
-    width: 100%;
-    opacity: 0; /* Inizialmente rendi il footer trasparente */
-    transition: opacity 0.2s;
+    padding: 3px;
 }
