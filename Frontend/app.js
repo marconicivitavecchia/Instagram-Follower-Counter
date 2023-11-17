@@ -1,43 +1,40 @@
-document.addEventListener("DOMContentLoaded", () => {
-    // Get the HTML element where the follower count will be displayed
-    const followerCountElement = document.getElementById("follower-count");
+function myCall() { 
+    console.log("interval timer...");
+    $.getJSON("./data.json").done(myDone).fail(onFail);
+}
 
-    // Function to update the follower count on the page
-    function updateFollowerCount(count) {
-        // Set the text content of the follower count element with the new count
-        followerCountElement.textContent = count;
-    }
+function myDone(dataJson) {
+    console.log(dataJson.follower);  //chiamiamo follower all'interno del file data.json, quindi stamperà 100 
+}
 
-    // Fetch the initial follower count from the server
-    fetch('http://localhost:5500/getFollowerCount')
-        .then(response => {
-            // Check if the response status is ok (HTTP status code 200-299)
-            if (!response.ok) {
-                // Handle non-ok responses
-                if (response.status === 404) {
-                    // Throw an error if the endpoint is not found
-                    throw new Error('Endpoint not found');
-                } else {
-                    // Try to get the response body as text for further examination
-                    return response.text();
-                }
-            }
-            // If the response is ok, parse it as JSON
-            return response.json();
-        })
+function onFail(e){
+    console.log(e);       //nel caso di errore, verrà stampato 
+}   
+
+function myInit() {
+    console.log("OK!");
+    setInterval(myCall, 1000);  //chiama la funzione myCall ogni 1000ms
+}
+
+function loadJSON() {
+    fetch('data.json')
+        .then(response => response.json())
         .then(data => {
-            // Check if the parsed data is a string (error case)
-            if (typeof data === 'string') {
-                console.log('Response Body (as text):', data);
-                // Throw an error for invalid JSON response
-                throw new Error('Invalid JSON response');
-            }
+            // Estrai il valore della variabile "follower"
+            const followerValue = data.follower;
 
-            // Log the parsed JSON data
-            console.log('Parsed JSON Data:', data);
+            // Ottieni l'elemento HTML in cui desideri stampare il valore
+            const followerContent = document.getElementById('follower-content');
 
-            // Update the follower count on the page with the data received from the server
-            updateFollowerCount(data.followerCount);
+            // Assegna il valore della variabile "follower" all'elemento HTML
+            followerContent.textContent = followerValue;
         })
-        .catch(error => console.error(error));
-});
+        .catch(error => {
+            console.error('Errore nel caricamento del file JSON:', error);
+        });
+}
+
+// Carica il JSON inizialmente
+loadJSON();
+
+$(document).init(myInit);
