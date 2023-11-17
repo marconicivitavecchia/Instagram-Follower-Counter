@@ -30,6 +30,14 @@ Instagram Follower Counter è un progetto **open source**, rilasciato sotto la l
 
 .. toctree::
    :maxdepth: 1
+   :caption: Linee Guida
+   :hidden:
+
+   guidelines/docs
+   guidelines/code
+
+.. toctree::
+   :maxdepth: 1
    :caption: Gruppi
    :hidden:
 
