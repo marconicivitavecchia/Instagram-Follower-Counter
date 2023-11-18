@@ -1,16 +1,7 @@
 function myCall() { 
     console.log("interval timer...");
-    $.getJSON("./data.json").done(myDone).fail(onFail);
+    $.getJSON("http://localhost:5500/getFollowerCount").done(myDone).fail(onFail);
 }
-
-function myDone(dataJson) {
-    console.log(dataJson.follower);  //chiamiamo follower all'interno del file data.json, quindi stamperà 100 
-}
-
-function onFail(e){
-    console.log(e);       //nel caso di errore, verrà stampato 
-}   
-
 function myInit() {
     console.log("OK!");
     setInterval(myCall, 1000);  //chiama la funzione myCall ogni 1000ms
@@ -34,18 +25,28 @@ function loadJSON() {
         });
 }
 
-// Carica il JSON inizialmente
-loadJSON();
+fetch('http://localhost:5500/getFollowerCount')
+        .then(response => {
+            // Check if the response status is ok (HTTP status code 200-299)
+            if (!response.ok) {
+                // Handle non-ok responses
+                if (response.status === 404) {
+                    // Throw an error if the endpoint is not found
+                    throw new Error('Endpoint not found');
+                } else {
+                    // Try to get the response body as text for further examination
+                    return response.text();
+                }
+            }
+            // If the response is ok, parse it as JSON
+            return response.json();
+})
 
 $(document).init(myInit);
 
-window.addEventListener("scroll", function() {
-    var footer = document.getElementById("footer");
-    var distanceFromTop = footer.getBoundingClientRect().top;
-
-    if (distanceFromTop <= window.innerHeight) {
-        footer.style.opacity = 1;
-    } else {
-        footer.style.opacity = 0;
-    }
+app.get('/getFollowerCount', (req, res) => {
+    res.json({ followerCount: output || 'Loading...' });
 });
+
+
+
