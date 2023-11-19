@@ -9,21 +9,14 @@ function onFail() {
 }
 function myCall() { 
     console.log("interval timer...");
-    $.getJSON("http://localhost:5500/getFollowerCount").done(myDone).fail(onFail);
+    $.getJSON("http://localhost:3300/getFollowerCount").done(myDone).fail(onFail);
 }
 function myInit() {
     console.log("OK!");
     setInterval(myCall, 1000);  //chiama la funzione myCall ogni 1000ms
 }
-/*document.addEventListener("DOMContentLoaded"), () => {
-    const followerCountElement = document.getElementById("follower-content");
-
-    function updateFollowerCount(count){
-        followerCountElement.textContent = count;
-    }
-}*/
 // Fetch the initial follower count from the server
-fetch('http://localhost:5500/getFollowerCount')
+fetch('http://localhost:3300/getFollowerCount')
 .then(response => {
     // Check if the response status is ok (HTTP status code 200-299)
     if (!response.ok) {
