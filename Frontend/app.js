@@ -33,7 +33,12 @@ fetch('http://localhost:3300/getFollowerCount')
     return response.json();
 })
 .catch(error => console.error(error));
-
 $(document).ready(myInit);
 
+document.addEventListener('DOMContentLoaded', function() {
+    // Mostra il contenuto principale
+    document.querySelector('.main-content').style.display = 'block';
 
+    // Nascondi la pagina di caricamento
+    document.querySelector('.loader-container').style.display = 'none';
+});
