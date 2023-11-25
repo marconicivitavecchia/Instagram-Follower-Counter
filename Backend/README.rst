@@ -45,6 +45,31 @@ Funzione per ottenere il conteggio dei follower: Viene definita una funzione che
 
 Intervallo di richiesta dei follower: La funzione per ottenere il conteggio dei follower viene chiamata ogni 10 secondi.
 
-Route per ottenere il conteggio dei follower: Viene definita una route che restituisce il conteggio dei follower al frontend.
+Route per ottenere il conteggio dei follower: Viene definita una route che restituisce il conteggio dei follower .
 
-Avvio del server: Il server Express viene avviato sulla porta specificata.
+Avvio del server: Il server Express viene avviato sulla porta specificata
+ Gestione MQTT
+
+ Dipendenze
+- `mqtt`: modulo per la comunicazione MQTT
+
+ Configurazione Connessione MQTT
+- Parametri di connessione, come protocollo, host, porta, ID cliente, ecc.
+- Creazione di un'istanza client MQTT e connessione al broker
+
+Eventi MQTT
+- Gestione degli eventi `connect` e `message` per la connessione al broker e la ricezione di messaggi
+
+Funzione di Pubblicazione MQTT
+- Funzione `publishMessage` per pubblicare un messaggio sul broker MQTT
+
+Esportazione della Funzione MQTT
+- Esportazione della funzione `publishMessage` per l'utilizzo esterno
+
+Utilizzo
+
+1. Configurare l'URL del proxy nella variabile `proxyOptions`.
+2. Assicurarsi che le dipendenze siano installate eseguendo `npm install`.
+3. Avviare l'applicazione eseguendo `node <nome_file>`.
+
+L'applicazione periodicamente recupera il conteggio dei follower da Instagram, lo pubblica tramite MQTT e fornisce l'informazione al frontend attraverso l'API REST.
