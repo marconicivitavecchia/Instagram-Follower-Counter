@@ -32,7 +32,7 @@ mistune==0.8.4
     # via m2r2
 packaging==23.2
     # via sphinx
-pillow==10.1.0
+pillow==10.2.0
     # via xanadu-sphinx-theme
 pygments==2.16.1
     # via sphinx
